@@ -1,4 +1,4 @@
-----------------------------ROW level security(Minor Project-1)---------------------------------------------------------
+--ROW level security(Minor Project-1)
 -- Apply row level security on tables to enable limited access for all users of Organization.
 
 create or replace role HUMAN_RESOURCE;
