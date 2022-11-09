@@ -97,7 +97,7 @@ show views like 'vw_employee'; -- can see only the data cant see the view defini
 
 select * from vw_employee;
 
-#Based on the roles , only respective data is visible to the users.
+# Based on the roles , only respective data is visible to the users.
 
 
 
