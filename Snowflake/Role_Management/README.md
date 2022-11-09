@@ -1,6 +1,5 @@
---ROW level security(Minor Project-1)
-
--- Apply row level security on tables to enable limited access for all users of Organization.
+# ROW level security(Minor Project-1) 
+# Apply row level security on tables to enable limited access for all users of Organization. 
 
 create or replace role HUMAN_RESOURCE;
 create or replace role TECHNOLOGY;
@@ -98,7 +97,7 @@ show views like 'vw_employee'; -- can see only the data cant see the view defini
 
 select * from vw_employee;
 
--- Based on the roles , only respective data is visible to the users.
+#Based on the roles , only respective data is visible to the users.
 
 
 
