@@ -2,7 +2,7 @@
 
 #### Description : The restuarant dataset is fetched from (https://www.yelp.com/dataset/download) and the dataset for Temp/Prec observations are from the Global Historical Climatology Network-Daily (GHCN-D) database. As the datasets are from diffrent formats like json and so on, Snowflake made it  very easy to transform and load the data by creating File_formats, Staging, Pipes, Snowsql concepts directly into the table. The main object of the project was to load the data by following the star schema , find the correlation or effect of temperature on Restaurant reviews. The Data Analysis was done using Snowflake sql and Powerbi to get insights from the data. The Project also focusses on understanding key concepts in Snowflake like data loading, Resource Monitoring, Snowsql setup and usage, Streams, Role Management for Data Security, Transient Tables and many more. For Powerbi the concepts like connecting to Snowflake, Power Query Transformations, Visualizations and publishing the Dashboard were performed.
 
- #### Project Design
+ ####                         Project Design
 ![plot](architecture.png)
-#### Star Schema (Fact and Data Tables)
+####                          Star Schema (Fact and Data Tables)
 ![plot](star_schema.png)
