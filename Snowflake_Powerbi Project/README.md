@@ -17,7 +17,8 @@
 5. Top 10 Users who posted the Maximum Reviews
 6. Time Series plot of Total Temperature by Date
 7. Time Series plot of Total Precipitation by Date
-**2.Snowflake Analysis**
+
+**2. Snowflake Analysis**
 1. Top 10 users who had maximum number of useful reviews as 1 for which business category .
 2. On which date temperature diffrence was maximum.
 3. Fetch the top 5 dates with maximum temperature diffrence
