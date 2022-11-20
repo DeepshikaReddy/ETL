@@ -10,9 +10,9 @@
 ![plot](Table_structure_snowflake.png)
 #### Data Analysis(EDA)
 1. Powerbi Analysis
-ii. There are lot of duplicate data so it will be removed in Power-query transformation.
-iii. Remove special characters from text field.
-iiii. Display Max/Min Temperatures State and City Wise.
+1. There are lot of duplicate data so it will be removed in Power-query transformation.
+2. Remove special characters from text field.
+3. Display Max/Min Temperatures State and City Wise.
 iiiii. Top 5 Business having total review stars in descending order.
 iiiiii. Top 10 Users who posted the Maximum Reviews
 iiiiiii. Time Series plot of Total Temperature by Date
