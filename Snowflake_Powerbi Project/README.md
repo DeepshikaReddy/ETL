@@ -20,6 +20,8 @@
 
 **2. Snowflake Analysis**
 1. Top 10 users who had maximum number of useful reviews as 1 for which business category .
+![image](https://user-images.githubusercontent.com/82325528/202920631-14be6a59-29ff-4c21-90a5-ee28e9b8d319.png)
+
 2. On which date temperature diffrence was maximum.
 3. Fetch the top 5 dates with maximum temperature diffrence
 4. Get the business details where the temperature distance was maximum for 5 dates.
