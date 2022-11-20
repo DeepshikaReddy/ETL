@@ -5,7 +5,7 @@
  #### Project Design
 ![plot](architecture.png)
 #### Star Schema (Fact and Data Tables)
-![plot](star_schema.png)
+![image](https://user-images.githubusercontent.com/82325528/202923164-71bd9a7a-676f-4ab5-a783-6debf9da3baf.png)
 #### Table structure
 ![plot](Table_structure_snowflake.png)
 #### Data Analysis(EDA)
