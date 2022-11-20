@@ -4,6 +4,7 @@
 
 #### Project Design
 ![alt text](https://github.com/DeepshikaReddy/ETL/tree/main/Snowflake_Powerbi%20Project/architecture.png?raw=true)
+![plot](https://github.com/DeepshikaReddy/ETL/tree/main/Snowflake_Powerbi%20Project/architecture.png)
 
 
 
