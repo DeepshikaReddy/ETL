@@ -8,3 +8,21 @@
 ![plot](star_schema.png)
 #### Table structure
 ![plot](Table_structure_snowflake.png)
+#### Data Analysis(EDA)
+1.Powerbi Analysis
+There are lot of duplicate data so it will be removed in Power-query transformation.
+Remove special characters from text field.
+Display Max/Min Temperatures State and City Wise.
+Top 5 Business having total review stars in descending order.
+Top 10 Users who posted the Maximum Reviews
+Time Series plot of Total Temperature by Date
+Time Series plot of Total Precipitation by Date
+2.Snowflake Analysis
+Top 10 users who had maximum number of useful reviews as 1 for which business category .
+On which date temperature diffrence was maximum.
+Fetch the top 5 dates with maximum temperature diffrence
+Get the business details where the temperature distance was maximum for 5 dates.
+Which business cat got the highest star?
+Display review_stars,user_stars and business_star for each business based on desc order of user stars 
+
+Result:From the above analysis there is no pattern found for business stars based on temperature change and prec value which is 4.6 .It is higher than the average precipitation value.Even with high temperatures the business was open or there is no significant impact found.
