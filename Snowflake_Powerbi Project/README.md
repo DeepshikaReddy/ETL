@@ -4,8 +4,5 @@
 
  #### Project Design
 ![plot](architecture.png)
-
-
-
-
-
+#### Star Schema (Fact and Data Tables)
+![plot](star_schema.png)
