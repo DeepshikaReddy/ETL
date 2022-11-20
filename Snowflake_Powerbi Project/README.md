@@ -10,13 +10,13 @@
 ![plot](Table_structure_snowflake.png)
 #### Data Analysis(EDA)
 1.Powerbi Analysis
-There are lot of duplicate data so it will be removed in Power-query transformation.
-Remove special characters from text field.
-Display Max/Min Temperatures State and City Wise.
-Top 5 Business having total review stars in descending order.
-Top 10 Users who posted the Maximum Reviews
-Time Series plot of Total Temperature by Date
-Time Series plot of Total Precipitation by Date
+ii.There are lot of duplicate data so it will be removed in Power-query transformation.
+iii.Remove special characters from text field.
+iiii.Display Max/Min Temperatures State and City Wise.
+iiiii.Top 5 Business having total review stars in descending order.
+iiiiii.Top 10 Users who posted the Maximum Reviews
+iiiiiii.Time Series plot of Total Temperature by Date
+iiiiiiii.Time Series plot of Total Precipitation by Date
 2.Snowflake Analysis
 Top 10 users who had maximum number of useful reviews as 1 for which business category .
 On which date temperature diffrence was maximum.
