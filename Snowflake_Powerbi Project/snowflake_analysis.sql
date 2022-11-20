@@ -364,12 +364,9 @@ SELECT parse_json($1):user_id ,
        create or replace stage my_unload_stage_fin
        file_format = my_csv_unload_format;
        
-       
        COPY INTO @my_unload_stage_fin from combined_fact_table HEADER = TRUE;
        
-       
        --get @my_unload_stage_fin file://C:/Users/deeps/OneDrive/Documents/dataset_snowflake/;
-       
        
        --truncate table combined_fact_table;
        
@@ -410,31 +407,10 @@ SELECT parse_json($1):user_id ,
        select * from test;
        select bus_cat,bus_stars from fact_table where bus_stars in (select max(bus_stars) 
        from fact_table) group by bus_cat,bus_stars ;
-       
-   
+      
       --Display review_stars,user_stars and business_star for each business based on desc order of user stars 
        select * from test;
        select BUS_NAME, USER_AVG_STARS,BUS_STARS,review_stars, row_number()
         over (order by USER_AVG_STARS desc) as index
         from fact_table;
    
-       
-      
-       
-      
-       
-       
-      
-   
-       
-
-
-
-
-
-
-
-
-
-
-
