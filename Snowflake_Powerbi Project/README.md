@@ -9,20 +9,20 @@
 #### Table structure
 ![plot](Table_structure_snowflake.png)
 #### Data Analysis(EDA)
-1. Powerbi Analysis
+**1. Powerbi Analysis**
 1. There are lot of duplicate data so it will be removed in Power-query transformation.
 2. Remove special characters from text field.
 3. Display Max/Min Temperatures State and City Wise.
-iiiii. Top 5 Business having total review stars in descending order.
-iiiiii. Top 10 Users who posted the Maximum Reviews
-iiiiiii. Time Series plot of Total Temperature by Date
-iiiiiiii. Time Series plot of Total Precipitation by Date
-2.Snowflake Analysis
-Top 10 users who had maximum number of useful reviews as 1 for which business category .
-On which date temperature diffrence was maximum.
-Fetch the top 5 dates with maximum temperature diffrence
-Get the business details where the temperature distance was maximum for 5 dates.
-Which business cat got the highest star?
-Display review_stars,user_stars and business_star for each business based on desc order of user stars 
+4. Top 5 Business having total review stars in descending order.
+5. Top 10 Users who posted the Maximum Reviews
+6. Time Series plot of Total Temperature by Date
+7. Time Series plot of Total Precipitation by Date
+**2.Snowflake Analysis**
+1. Top 10 users who had maximum number of useful reviews as 1 for which business category .
+2. On which date temperature diffrence was maximum.
+3. Fetch the top 5 dates with maximum temperature diffrence
+4. Get the business details where the temperature distance was maximum for 5 dates.
+5. Which business cat got the highest star?
+6. Display review_stars,user_stars and business_star for each business based on desc order of user stars 
 
-Result:From the above analysis there is no pattern found for business stars based on temperature change and prec value which is 4.6 .It is higher than the average precipitation value.Even with high temperatures the business was open or there is no significant impact found.
+**Result:From the above analysis there is no pattern found for business stars based on temperature change and prec value which is 4.6 .It is higher than the average precipitation value.Even with high temperatures the business was open or there is no significant impact found.**
