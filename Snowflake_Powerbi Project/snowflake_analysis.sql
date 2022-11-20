@@ -1,7 +1,7 @@
 create or replace database db_snowflake;
 create or replace schema db_schema;
 
-----------------------Percipitation table loading---------------------------------------------------
+-------------------------------------------------------Precipitation Data Loading-------------------------------------------------------------------------------------------------------------
 create or replace file format my_csv_format
     type=csv
     skip_header=1
@@ -26,7 +26,7 @@ update prec set date= TO_DATE(date, 'YYYYMMDD');
 
 select count(*) from prec;
 
-------------------Temp table loading--------------------------------------
+--------------------------------------------------------------Temp table loading----------------------------------------------------------------------------------------------------------------------------
 
 create or replace table temp_change(
     date string,
@@ -50,7 +50,7 @@ update temp_change set date= TO_DATE(date, 'YYYYMMDD');
 
 select count(*) from temp_change;
 
------------Business table loading.---------------------------------------------------------------
+--------------------------------------------------------Business table loading.-------------------------------------------------------------------------------------------------------------------------------
 create or replace file format my_json_format
 type = 'json'
 strip_outer_array = true;
@@ -109,7 +109,7 @@ from @json_buss_int_stage;
 
 select * from business_data limit 10;
 
------checkin data----------------
+--------------------------------------------------------------Checkin data Loading-----------------------------------------------------------------------------------------------------------------------------------------------
 create or replace stage json_checkin_int_stage
 file_format = my_json_format;
 
@@ -127,7 +127,7 @@ SELECT parse_json($1):business_id,
 
 select * from checkin_data limit 10;
 
------------------Review data--------------------------
+---------------------------------------------------------------Review data Loading-------------------------------------------------------------------------------------------------------------------------------------
 create or replace stage json_review_int_stage
 file_format = my_json_format;
 
@@ -159,7 +159,7 @@ SELECT parse_json($1):review_id,
     
     select * from review_data limit 10;
 
---------------------------------------TIP----------------------------------------------
+---------------------------------------------------------Tip data loading----------------------------------------------------------------------------------------------------------------------
 create or replace stage json_tip_int_stage
 file_format = my_json_format;
 
@@ -189,7 +189,7 @@ SELECT parse_json($1):user_id ,
        
 select * from tip_data limit 10;
 
-------------------------------------USER--------------------------------------------------------------
+-------------------------------------------------------------USER Data Loading------------------------------------------------------------------------------------------------------------------------
 create or replace stage json_user_int_stage
 file_format = my_json_format;
 
@@ -249,7 +249,7 @@ SELECT parse_json($1):user_id ,
        
        select count(*) from user_data;
    
-       ----------------------------combine business and temperature data----------------------------------
+       -------------------------------------------Combine Business and Temperature data through Date-----------------------------------------------------------------------------------------
        select u.user_id as user_id,b.state as business_date,b.address as business_address,b.latitude,b.longitude, b.name as business_name,r.useful as useful_review,substring(r.date, 0, 10) as review_date,r.text as review_text,
        t.min_val as min_temp,t.normal_min,t.normal_max, t.max_val as max_temp,tips.text as tips_text, tips.compliment_count as compliment_count,p.precipitation,p.precipitation_normal from prec as p
        join review_data as r
@@ -281,11 +281,10 @@ SELECT parse_json($1):user_id ,
        on u.user_id=r.user_id limit 10;
        
        
-       --------------------------------DATA ANALYSIS---------------------------------------------------------------------------
+       -------------------------------------------------------DATA ANALYSIS---------------------------------------------------------------------------------------------------------
        select count(*) from combined_fact_table;--329061051
        
        select count(distinct tips_text) from combined_fact_table;--845665
-       
        
        select * from business_data limit 10; --BUSINESS_ID,NAME,ADDRESS,CITY,STATE,POSTAL_CODE,LATITUDE,LONGITUDE,STARS,REVIEW_COUNT,IS_OPEN,ATTRIBUTES,CATEGORIES,HOURS
        
@@ -301,7 +300,7 @@ SELECT parse_json($1):user_id ,
        
        select * from temp_change limit 10;--date,min_val,max_val,normal_min,normal_max
        
-       ---Final fact table-------------------------------------------------------------------------
+       -------------------------------------------------------Final fact table-----------------------------------------------------------------------------------------------------------------------------------
        select   
        b.business_id as bus_id,b.name as bus_name,b.address as bus_addr,b.city as bus_city,b.state as bus_state,
        b.postal_code as bus_post_code,b.latitude as bus_lat,b.longitude as bus_long,b.stars as bus_stars,
@@ -376,21 +375,7 @@ SELECT parse_json($1):user_id ,
        
        SELECT $1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,$14,$15,$16,$17 FROM @my_unload_stage_test_fin;
        
-       --------------------------------SNOWFLAKE DATA ANALYSIS---------------------------------------------------------------
-       --Objective: Does temperature and Precipitation have impact of Business Reviews
-       
-        --There are lot of duplicate data so it will be removed in Power-query transformation.
-       --select state,country and merge the address column into 1 field.--powerbi
-       --Top 5 users who had maximum number of useful reviews for which business category.--snowflake
-       --remove special characters, stemming, lemma , stop words from review_test--powerquery(add python step)
-       --find the minimum and maximum temp state wise and country-wise grouped.--powerbi
-       -- check if review_text contain any swear words if so add a column 0/1--powerbi(add python step)
-       --Sort min_temp and norm_min temp date wise and calculate the diffrence for business- snowflake
-       --top 5 business with maximum compliment counts.--powerbi
-       --check if temperature increases precipitation increases or wise versa--powerbi
-       --for higher precipitation values is the business open? powerbi
-       -- which business cat got the highest star --snowflake 
-       -- sort review_count by decending and check if temperature or precipitation has any patterns--powerbi
+       ------------------------------------------------SNOWFLAKE DATA ANALYSIS---------------------------------------------------------------------------------------------------
        
        --Top 10 users who had maximum number of useful reviews as 1 for which business category .
        select username,count(review_useful) as useful_review_count from fact_table 
@@ -403,12 +388,12 @@ SELECT parse_json($1):user_id ,
        group by temp_date having diffrence_temp is not null
        order by diffrence_temp desc;
        
-       --get the top 5 dates with maximum temperature diffrence
+       --Get the top 5 dates with maximum temperature diffrence
        select temp_date from fact_table 
        group by temp_date having abs(sum(temp_min)-sum(temp_norm_min)) is not null
        order by abs(sum(temp_min)-sum(temp_norm_min)) desc limit 5;
        
-       --get the business details where the temperature distance was maximum for 5 dates.
+       --Get the business details where the temperature distance was maximum for 5 dates.
        select temp_date,bus_stars,bus_open,bus_sttr['Alcohol'],bus_cat,prec 
        from fact_table where temp_date in (select temp_date from fact_table 
        group by temp_date having abs(sum(temp_min)-sum(temp_norm_min)) is not null
@@ -421,13 +406,13 @@ SELECT parse_json($1):user_id ,
        --and prec value is 4.6  itself which is higher then average precipitation.Even with high
        --temperatures the business was open.
        
-       --Which business cat got the highest star 
+       --Which business category got the highest star 
        select * from test;
        select bus_cat,bus_stars from fact_table where bus_stars in (select max(bus_stars) 
        from fact_table) group by bus_cat,bus_stars ;
        
    
-      --display review_stars,user_stars and business_star for each business based on desc order of user stars 
+      --Display review_stars,user_stars and business_star for each business based on desc order of user stars 
        select * from test;
        select BUS_NAME, USER_AVG_STARS,BUS_STARS,review_stars, row_number()
         over (order by USER_AVG_STARS desc) as index
