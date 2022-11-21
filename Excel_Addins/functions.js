@@ -1,4 +1,5 @@
 /**@author dreddyag
+ * Performs Vertical and Horizonal Lookup values.
  * @customfunction vh_lookup
  * @param {string} valueRange range of cells to perform lookup
  * @param {string} vlookupVal vlookup value 
