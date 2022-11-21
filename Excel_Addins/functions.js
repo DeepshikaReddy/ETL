@@ -7,6 +7,7 @@
  * @param {string} vlookupVal vlookup value 
  * @param {string} hlookupVal Optional string hlookupvalue
  * @returns {string} vhlookupvalue 
+ * Example: =CONTOSO.VH_LOOKUP("A1:D10","William","PHONE_NUMBER")#515.123.8181
  */
  async function vh_lookup(valueRange,vlookupVal,hlookupVal){
   try {
@@ -86,6 +87,7 @@
  * @param {string} [currencyText] Optional text to append to the converted string, default is Dollars
  * @param {number} [showCents] Optional handling to spell out cents.
  * @return {string} converted number to string.
+ * Example: CONTOSO.REPORTNUMBER("12.09",1,"Dollars",1) Twelve Dollars and Nine Cents
  */
 async function SPELLNUMBER(myNumber, scalingFactor, currencyText, showCents) {
     try {
@@ -133,6 +135,7 @@ async function SPELLNUMBER(myNumber, scalingFactor, currencyText, showCents) {
  * @param {number} [scalingFactor] Optional scaling factor to apply to myNumber
  * @param {string} [currencySymbol] Optional text to append the Currency Symbol
  * @return {string} converted number to string.
+ * Example: CONTOSO.REPORTNUMBER("12",1,"$") $12
  */
 async function REPORTNUMBER(myNumber, scalingFactor, currencySymbol) {
     try {
@@ -249,6 +252,7 @@ async function REPORTNUMBER(myNumber, scalingFactor, currencySymbol) {
  * @param {string} vlookupVal vlookup value 
  * @param {string} hlookupVal Optional string hlookupvalue
  * @returns {string} vhlookupvalue 
+ * Example: CONTOSO.VH_LOOKUP_TEST(A1:D10,"William","PHONE_NUMBER")#515.123.8181
  */
  async function vh_lookup_test(valueRange,vlookupVal,hlookupVal){
   try {
