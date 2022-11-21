@@ -1,4 +1,4 @@
-/**@author dreddyag@stout.com
+/**@author dreddyag
  * @customfunction vh_lookup
  * @param {string} valueRange range of cells to perform lookup
  * @param {string} vlookupVal vlookup value 
