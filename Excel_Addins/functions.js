@@ -1,3 +1,5 @@
+//custom functions examples.
+
 /**@author dreddyag
  * Performs Vertical and Horizonal Lookup values.
  * @customfunction vh_lookup
