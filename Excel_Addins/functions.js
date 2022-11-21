@@ -240,3 +240,84 @@ async function REPORTNUMBER(myNumber, scalingFactor, currencySymbol) {
 
     }
 }
+
+
+//takes range as input 
+/**@author dreddyag@stout.com
+ * @customfunction vh_lookup_test
+ * @param {string[][]} valueRange range of cells to perform lookup
+ * @param {string} vlookupVal vlookup value 
+ * @param {string} hlookupVal Optional string hlookupvalue
+ * @returns {string} vhlookupvalue 
+ */
+ async function vh_lookup_test(valueRange,vlookupVal,hlookupVal){
+  try {
+    console.log("vh_lookup custom function execution started")
+    let vhlookupvalue=""
+    let invalidLookup="Lookup value not found"
+
+    //Number of rows and columns in Range of Cells
+    let colCount=valueRange[0].length
+    let rowCount=valueRange.length
+  
+    //vlookup
+    if(hlookupVal=="" &&  (colCount==2)){
+      console.log("VLookup")
+      for(const row of valueRange){
+        //does first column contain the lookup value, then adjacent value is its vhlookup
+        if(row[0]==vlookupVal){
+          vhlookupvalue=row[1];
+          break;
+        }else{
+          vhlookupvalue=invalidLookup;
+      }
+    }
+    //hlookup
+    }else if(hlookupVal=="" && (rowCount==2)){
+      console.log("Hlookup")
+      //find the index of lookupvalue and match with the first column as vhlookup
+      let index=valueRange[0].indexOf(vlookupVal)
+      if(valueRange[1][index]){
+        vhlookupvalue=valueRange[1][index]
+      }else{
+        vhlookupvalue=invalidLookup
+      }
+    }else if(hlookupVal!=""){
+      console.log("VHLookup")
+      var vindices=findrow_col_index(valueRange,vlookupVal);
+      var hindices=findrow_col_index(valueRange,hlookupVal);
+
+      //find the indices where values intersect and find the lookupvalue.
+      //vlokupval n*0
+      //hlookupval 0*m
+      if(vindices[1]==0 && hindices[0]==0){
+        vhlookupvalue=valueRange[vindices[0]][hindices[1]]  
+      }else{
+        vhlookupvalue=invalidLookup
+    }
+    }else{
+      console.log("None of the conditions are met.")
+      vhlookupvalue=invalidLookup
+    }
+      console.log(vhlookupvalue)
+      return vhlookupvalue;
+
+} catch (error) {
+  console.log(error.code)
+  console.log(error.message)
+  console.log("error occured");
+}
+}
+
+//find the row and column index of array
+function findrow_col_index(valueRange,val){
+  let colIndex = -1;
+  const rowIndex = valueRange.findIndex((row) => {
+    const foundColIndex = row.indexOf(val);
+    if (foundColIndex !== -1) {
+      colIndex = foundColIndex;
+      return true;
+  }
+});
+  return [rowIndex, colIndex];
+}
