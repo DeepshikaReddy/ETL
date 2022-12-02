@@ -16,6 +16,7 @@ date string,
 precipitation string,
 precipitation_normal string);
 
+--snowsql -a xxx.west-us-2.azure -u xxx123
 --put file:///C:/Users/deeps/OneDrive/Documents/dataset_snowflake/precipitation.csv @db_snowflake.db_schema.my_stage/;
 copy into prec
 from @my_stage
