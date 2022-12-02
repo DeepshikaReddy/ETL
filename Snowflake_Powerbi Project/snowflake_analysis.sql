@@ -22,6 +22,21 @@ copy into prec
 from @my_stage
 on_error=continue;
 
+--transform data while loading.
+copy into Synthetic_Data(Name,Email,Phone,Financial_Status,Paid_at,Fulfillment_Status,Accepts_Marketing ,Currency ,
+Subtotal ,Shipping ,Taxes ,Discount_Amount ,Total ,Discount_code,Shipping_Method ,Lineitem_quantity ,Lineitem_price ,
+Lineitem_total_price ,Lineitem_compare_at_price ,Lineitem_sku ,Lineitem_requires_shipping ,Lineitem_fulfillment_status ,
+Billing_Name,Billing_Street ,Billing_Address1 ,Billing_Addresss2 ,Billing_City ,Billing_Zip ,Billing_State ,
+Billing_Country ,Shipping_Name ,Shipping_Street,Shipping_Address1,Shipping_Addresss2 ,
+Shipping_City ,Shipping_Zip ,Shipping_State ,Shipping_Country,Payment_Method ,ID 
+,Year_from_Paid_at )--41
+   from (select t.$1,t.$2,t.$3,t.$4,to_timestamp_ntz(t.$5,'MM/DD/YYYY HH24:MI'),t.$6,
+         t.$7,t.$8,t.$9,t.$10,t.$11,t.$12,t.$13,
+         t.$14,t.$15,t.$16,t.$17,t.$18,t.$19,
+         t.$20,t.$21,t.$22,t.$23,t.$24,t.$25,t.$26,t.$27,t.$28,t.$29,t.$30,t.$31,
+         t.$32,t.$33,t.$34,t.$35,t.$36,t.$37,t.$38,t.$39,t.$40,(substring(split(t.$5,' ')[0],-4)) from @my_stage t)
+   file_format = (format_name = my_csv_format);
+   
 update prec set date= TO_DATE(date, 'YYYYMMDD');
 
 
