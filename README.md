@@ -1,6 +1,6 @@
 # ETL
 1.Snowflake.
-2.Aletryx.
+2.Altteryx.
 3.Power Query.
 4.Python.
 
