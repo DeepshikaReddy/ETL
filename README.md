@@ -1,8 +1,10 @@
 # ETL
-1.Snowflake.
-2.Alteryx.
-3.Power Query.
-4.Python.
+1.Snowflake datawarehouse.
+1.2 Synapse(sql pool) datawarehouse.
+2.Alteryx for ETL.
+3.Power Query for ETL.
+4.Python for ETL.
+5.Talend for ETL
 
 # Some of the Sql optimization to keep in mind:
 1. Try to create dimension tables with integer as Primary key it makes the indexing faster.
