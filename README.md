@@ -1,8 +1,8 @@
 # ETL
-Snowflake
-Aletryx
-Power Query
-Python
+1.Snowflake
+2.Aletryx
+3.Power Query
+4.Python
 
 # Some of the Sql optimization to keep in mind:
 1. Try to create dimension tables with integer as Primary key it makes the indexing faster.
