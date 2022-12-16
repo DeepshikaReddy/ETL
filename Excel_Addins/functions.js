@@ -1,6 +1,6 @@
 //custom functions examples.
 
-/**@author dreddyag
+/**
  * Performs Vertical and Horizonal Lookup values.
  * @customfunction vh_lookup
  * @param {string} valueRange range of cells to perform lookup
@@ -80,8 +80,7 @@
 
 /**
  * Returns the number spelled out
- * @customfunction 
- * @author dreddyag
+ * @customfunction
  * @param {number} myNumber the value to be converted to words
  * @param {number} [scalingFactor] Optional scaling factor to apply to myNumber
  * @param {string} [currencyText] Optional text to append to the converted string, default is Dollars
@@ -130,7 +129,6 @@ async function SPELLNUMBER(myNumber, scalingFactor, currencyText, showCents) {
 /**
  * Returns the number in certain format
  * @customfunction 
- * @author dreddyag
  * @param {number} myNumber the value to be converted to words
  * @param {number} [scalingFactor] Optional scaling factor to apply to myNumber
  * @param {string} [currencySymbol] Optional text to append the Currency Symbol
@@ -246,7 +244,7 @@ async function REPORTNUMBER(myNumber, scalingFactor, currencySymbol) {
 
 
 //takes range as input 
-/**@author dreddyag@stout.com
+/**
  * @customfunction vh_lookup_test
  * @param {string[][]} valueRange range of cells to perform lookup
  * @param {string} vlookupVal vlookup value 
